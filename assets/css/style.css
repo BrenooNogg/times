@@ -119,4 +119,7 @@ input{
     div.modal-container{
         width: 80vw;
     }
+    textarea{
+        background-color: var(--color-white);
+    }
 }
