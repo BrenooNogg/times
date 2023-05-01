@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+:root{
+    --color-darkblue-alpha: rgba(27, 27, 50, 0.8);
+    --color-white: #fff;
+    --color-green: #37af37;
+
+    /* WARNING */
+    --color--pink: #ffc0cb;
+    --color-red: #ff0000;
+}
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Poppins', sans-serif;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--color-white);
+}
+body::before{
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    z-index: -1;
+    background-image: linear-gradient(115deg, rgba(58,58,158,0.8), rgba(136,136,206,0.7)), url('../imgs/img-bg.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+header{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+
+}
+.description{
+    font-style: italic;
+    font-weight: 200;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.4);
+    font-size: 15px;
+    text-align: center  ;
+}
+.form{
+    background: var(--color-darkblue-alpha);
+    padding: 2.5rem;
+    width: 50vw;
+    margin: 20px auto;
+}
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+textarea{
+    width: 100%;
+    resize: vertical;
+    padding: 0.625rem;
+}
+
+.form-group button{
+    color: inherit;
+    background: var(--color-green);
+    display: block;
+    border-radius: 0.75rem;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    border-radius: 2px;
+}
+
+button{
+    border: none;
+    cursor: pointer;
+    outline: none;
+}
+.time{
+    display: flex;
+    flex-wrap: wrap;
+    color: var(--color-white);
+}
+.time p{
+    background: var(--color-darkblue-alpha);
+    margin: 10px;
+    padding: 1rem;
+    border-radius: 2px;
+    width: 30;
+    text-align: center;
+} 
+.warning{
+    background: var(--color--pink);
+    padding: 10px;
+    font-size: 12px;
+    color: var(--color-red);
+    font-weight: bold;
+    text-align: center;
+
+}
+input{
+    display: block;
+    border-radius: 0.25rem;
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+}
+@media screen and (max-width: 665px) {
+    .form{
+        width: 80vw;
+        padding: 3rem;
+    }
+    .modal.description{
+        font-size: 0.3rem;
+    }
+    div.modal-container{
+        width: 80vw;
+    }
+}

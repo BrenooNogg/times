@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorteio de Times</title>
+    <link rel="stylesheet" href="./assets/css/modal.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+<body>
+    <header>
+        <h2>Sorteio de Times</h2>
+        <span class="description">Criar equipes e grupos aleatórios a partir de uma lista de participantes</span>
+    </header>
+    <main>
+        <div class="form">
+            <div class="form-group">
+                <label for="input-times">Número de times:</label>
+                <input type="number" id="input-times" min="1" value="2">    
+            </div>
+            <div class="form-group">
+                <label for="input-times">Número de Pessoas por time:</label> 
+                <input type="number" id="input-numeros-por-time" min="1" value="2">    
+            </div>
+           
+            <div class="form-group">
+                <label for="textarea-nomes">Digite os nomes dos jogadores:</label>  
+                <textarea id="textarea-nomes" rows="10" cols="50"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn-sorteio">Sortear Times</button>            
+            </div>
+            <p id="warning"></p>
+        </div>
+    </main>
+    <section>
+        <div class="modal-container">
+            <div class="modal">
+                <h2 class="modal-title">Times Sorteados</h2>
+                <hr>
+                <span class="description">Preparados para a bola rolar? Os times estão sorteados e prontos para o fut! Vamos jogar!</span>
+                <div id="time"></div>
+                <hr>
+                <div class="btns">
+                    <button class="btnOk">Ok</button>                
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <script src="./assets/js/app.js"></script>
+</body>
+</html>
