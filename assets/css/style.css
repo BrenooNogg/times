@@ -63,7 +63,6 @@ textarea{
     width: 100%;
     resize: vertical;
     padding: 0.625rem;
-    color: var(--color-white);
 }
 
 .form-group button{
