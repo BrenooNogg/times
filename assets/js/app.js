@@ -4,12 +4,11 @@ const membrosPorEquipe = document.querySelector("#input-membros"); // nºde pess
 const btn = document.querySelector(".btn-sorteio");
 const resultado = document.querySelector("#time");
 const warning = document.querySelector('#warning');
-const validationWarning = document.querySelector('validation-warning');
+const validationWarning1 = document.querySelector('.validation-warning1');
+const validationWarning2 = document.querySelector('.validation-warning2');
 
 function criarEquipes() {
-    // const nomes = textarea.value.trim().split(/\s*[\n,]\s*/);
     const nomes = textarea.value.trim().split(/\s*(?:,|\n)\s*|\s+(?=\S{1,2}\b)/g);
-
 
     const numeroEquipes = parseInt(times.value);
     const numeroMembros = parseInt(membrosPorEquipe.value);
@@ -17,20 +16,44 @@ function criarEquipes() {
     const equipes = [];
 
     // Verifica se há nomes suficientes para preencher as equipes
-    if (nomes.length % totalMembros === 1) {
+    
+    if(textarea.value == ""){
+        textarea.style.borderColor = 'red';
         warning.innerHTML = '<p class="warning">Não há nomes suficientes para preencher todas as equipes.</p>';
-        return;
-    }else if(nomes.length > totalMembros){
+    }else{
+        textarea.style.borderColor = '';
+        warning.innerHTML = '';
+    }
+
+    if (nomes.length % totalMembros === 1) {
+        times.style.borderColor = 'red'; 
         warning.innerHTML = '<p class="warning">Não há equipes suficientes para o número de participantes.</p>';
         return;
     }else{
         warning.innerHTML = '';
     }
-    if(times.value <= 0 || membrosPorEquipe.value <= 0){
-        times.style.borderColor = 'red'; 
+    
+    if(nomes.length < totalMembros){
         membrosPorEquipe.style.borderColor = 'red'; 
-        validationWarning.style.display = 'block';
+        warning.innerHTML = '<p class="warning">Não há nomes suficientes para preencher todas as equipes.</p>';
+        return;
+    }else{
+        warning.innerHTML = ''; 
+    }
+    if(times.value <= 1){
+        times.style.borderColor = 'red'; 
+        warning.innerHTML = '<p class="warning">Número de equipes é no mínimo 2.</p>';
         return; 
+    }else{
+        times.style.borderColor = '';
+    }
+    if(membrosPorEquipe.value < 1){
+        membrosPorEquipe.style.borderColor = 'red'; 
+        membrosPorEquipe.style.borderColor = 'red'; 
+        warning.innerHTML = '<p class="warning">Número de participantes é no mínimo 1.</p>';
+        return;
+    }else{
+        membrosPorEquipe.style.borderColor = '';
     }
 
     // Loop pelo número de equipes desejadas
@@ -78,7 +101,8 @@ function closedModal() {
 }
 
 btn.addEventListener('click', () => {
-      criarEquipes();        
+    
+    criarEquipes();        
 });
 
 

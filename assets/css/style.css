@@ -100,8 +100,14 @@ button{
     color: var(--color-red);
     font-weight: bold;
     text-align: center;
-
 }
+
+.validation-warning1, .validation-warning2{
+    color: var(--color-red);
+    opacity: 0.7;
+    font-size: 1rem;
+}
+
 input{
     display: block;
     border-radius: 0.25rem;
@@ -122,10 +128,4 @@ input{
     textarea{
         background-color: var(--color-white);
     }
-}
-.validation-warning{
-    display: none;
-    color: var(--color-red);
-    opacity: 0.7;
-    font-size: 0.8px;
 }
