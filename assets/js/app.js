@@ -4,8 +4,6 @@ const membrosPorEquipe = document.querySelector("#input-membros"); // nºde pess
 const btn = document.querySelector(".btn-sorteio");
 const resultado = document.querySelector("#time");
 const warning = document.querySelector('#warning');
-const validationWarning1 = document.querySelector('.validation-warning1');
-const validationWarning2 = document.querySelector('.validation-warning2');
 
 function criarEquipes() {
     const nomes = textarea.value.trim().split(/\s*(?:,|\n)\s*|\s+(?=\S{1,2}\b)/g);
@@ -14,47 +12,64 @@ function criarEquipes() {
     const numeroMembros = parseInt(membrosPorEquipe.value);
     const totalMembros = numeroEquipes * numeroMembros;
     const equipes = [];
-
-    // Verifica se há nomes suficientes para preencher as equipes
-    
     if(textarea.value == ""){
         textarea.style.borderColor = 'red';
-        warning.innerHTML = '<p class="warning">Não há nomes suficientes para preencher todas as equipes.</p>';
+        warning.innerHTML = '<p class="warning">Campo vázio.</p>';
+        textarea.focus();
+        return; 
     }else{
         textarea.style.borderColor = '';
         warning.innerHTML = '';
     }
+    // if(nomes.length % times.value !== 0){
+    //     alert('error');
+    // }
 
-    if (nomes.length % totalMembros === 1) {
+    // Verifica se há nomes suficientes para preencher as equipes
+    if(times.value == ""){
         times.style.borderColor = 'red'; 
-        warning.innerHTML = '<p class="warning">Não há equipes suficientes para o número de participantes.</p>';
+        warning.innerHTML = '<p class="warning">Campo vazio!</p>';
+        times.focus();
         return;
+    }else if(times.value < 1){
+        times.style.borderColor = 'red'; 
+        warning.innerHTML = '<p class="warning">Número de equipes é maior ou igual a 1!</p>';
+        times.focus();
+        return;        
     }else{
+        times.style.borderColor = '';
         warning.innerHTML = '';
     }
-    
-    if(nomes.length < totalMembros){
-        membrosPorEquipe.style.borderColor = 'red'; 
-        warning.innerHTML = '<p class="warning">Não há nomes suficientes para preencher todas as equipes.</p>';
+
+    if(membrosPorEquipe.value == ""){
+        membrosPorEquipe.style.borderColor = 'red';
+        warning.innerHTML = '<p class="warning">Campo vazio!</p>';
+        membrosPorEquipe.focus();
         return;
-    }else{
-        warning.innerHTML = ''; 
-    }
-    if(times.value <= 1){
-        times.style.borderColor = 'red'; 
-        warning.innerHTML = '<p class="warning">Número de equipes é no mínimo 2.</p>';
+    }else if(membrosPorEquipe.value < 1){
+        membrosPorEquipe.style.borderColor = 'red'; 
+        warning.innerHTML = '<p class="warning">Número de participantes é maior ou igual a 1!</p>';
+        membrosPorEquipe.focus();
         return; 
     }else{
         times.style.borderColor = '';
+        warning.innerHTML = '';
     }
-    if(membrosPorEquipe.value < 1){
-        membrosPorEquipe.style.borderColor = 'red'; 
-        membrosPorEquipe.style.borderColor = 'red'; 
-        warning.innerHTML = '<p class="warning">Número de participantes é no mínimo 1.</p>';
+
+    if(nomes.length % totalMembros !== 0){
+        textarea.style.borderColor = 'red';
+        warning.innerHTML = '<p class="warning">Número de participantes não conrresponde ao número de equipes.</p>';
+        textarea.focus();    
         return;
     }else{
-        membrosPorEquipe.style.borderColor = '';
+        textarea.style.borderColor = '';
+        warning.innerHTML = '';  
     }
+    if(nomes.length !== totalMembros){
+        warning.innerHTML = '<p class="warning">Número de participantes e equipes não conrrespondem ao total de membros inseridos.</p>';
+        return;
+    }
+
 
     // Loop pelo número de equipes desejadas
     for (let i = 0; i < numeroEquipes; i++) {
@@ -72,6 +87,7 @@ function criarEquipes() {
 
         // Adiciona a equipe criada à matriz de equipes
         equipes.push(equipe);
+        console.log(equipes);
     }
 
     // Cria a string com a lista de equipes e membros
@@ -100,10 +116,7 @@ function closedModal() {
     }
 }
 
-btn.addEventListener('click', () => {
-    
-    criarEquipes();        
-});
+btn.addEventListener('click',criarEquipes);
 
 
   
