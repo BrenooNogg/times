@@ -21,9 +21,6 @@ function criarEquipes() {
         textarea.style.borderColor = '';
         warning.innerHTML = '';
     }
-    // if(nomes.length % times.value !== 0){
-    //     alert('error');
-    // }
 
     // Verifica se há nomes suficientes para preencher as equipes
     if(times.value == ""){
@@ -110,6 +107,7 @@ function closedModal() {
     if(modal.style.display === 'none'){
         modal.style.display = 'block';
         form.style.display = 'none';
+        form.style.animation = 'modal .6s';
     }else{
         form.style.display = 'block';
         modal.style.display = 'none';
@@ -117,6 +115,3 @@ function closedModal() {
 }
 
 btn.addEventListener('click',criarEquipes);
-
-
-  

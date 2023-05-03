@@ -51,8 +51,8 @@ header{
 .form{
     background: var(--color-darkblue-alpha);
     padding: 2.5rem;
-    width: 50vw;
-    margin: 20px auto;
+    width: 35vw;    
+    margin: 10px auto;
 }
 .form-group{
     display: flex;
@@ -63,8 +63,6 @@ textarea{
     width: 100%;
     resize: vertical;
     padding: 0.625rem;
-    /* border: none; */
-    /* outline: none; */
     outline: #ff0000;
 
 }
@@ -103,12 +101,7 @@ button{
     color: var(--color-red);
     font-weight: bold;
     text-align: center;
-}
-
-.validation-warning1, .validation-warning2{
-    color: var(--color-red);
-    opacity: 0.7;
-    font-size: 1rem;
+    animation: warning 1s normal;
 }
 
 input{
@@ -119,10 +112,28 @@ input{
     outline: #ff0000;
 
 }
-@media screen and (max-width: 665px) {
+@keyframes warning {
+    0% {
+        transform: translateX(-2px) rotate(-1deg);
+      }
+      25% {
+        transform: translateX(2px) rotate(1deg);
+      }
+      50% {
+        transform: translateX(-2px) rotate(-1deg);
+      }
+      75% {
+        transform: translateX(2px) rotate(1deg);
+      }
+      100% {
+        transform: translateX(-2px) rotate(-1deg);
+      }
+  }
+
+@media screen and (max-width: 500px) {
     .form{
         width: 80vw;
-        padding: 3rem;
+        padding: 2rem;
     }
     .modal.description{
         font-size: 0.3rem;
